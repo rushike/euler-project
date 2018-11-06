@@ -21,14 +21,14 @@ public class P634{
          * Cal in 2 steps
          */
         int count = 0, a = 2, b = (int)Math.pow(x/4, 0.333333) + 1, intr = b + 1, cd = (int)Math.pow(x/8, 0.5) + 1;
-        System.out.println("\n\na : " + a + ", b : " + b);
+        // System.out.println("\n\na : " + a + ", b : " + b);
         while(a < cd && b != 1){
-            System.out.println("a : " + a + ", b : " + b);
+            // System.out.println("a : " + a + ", b : " + b);
             while(b > 1) {
                 //System.out.println("fn( " + b + " ) = " + fn(a, b));
                 if(fn(a, b) <= x) {
                     se1.add("(" + a + "^2, " + b + "^3)");
-                    System.out.println("("+a+", "+b+" ) ==> " +fn(a, b));
+                    // System.out.println("("+a+", "+b+" ) ==> " +fn(a, b));
                     count++;
                 }
                 b--;
@@ -37,7 +37,7 @@ public class P634{
             a++;
         }
         
-        System.out.println("Count : " + count);
+        // System.out.println("Count : " + count);
         return se1.size();
     }
 
