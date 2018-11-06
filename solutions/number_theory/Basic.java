@@ -12,6 +12,9 @@ import extended_number.Z;
  * @author rushi
  */
 public class Basic {
+
+    public static final String[] __DIGITS = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", 
+                                            "a", "b", "c", "d", "e", "f", "g", "h", "i"};
    
     public static boolean is_prime(long num){
         int mid_sq = (int)Math.sqrt(num), iter = 2;
@@ -44,7 +47,28 @@ public class Basic {
         }
         return prime_list;
     }
+
+    public static long largest_prime_factor(long number){
+        int mid = (int)Math.sqrt(number);
+        ArrayList<Integer> prime_list = Basic.sieve_eratosthenes(mid);
+        int sz = prime_list.size(),  in = sz - 1;
+        while(in > 0){
+            if(number % prime_list.get(in) == 0 ) return prime_list.get(in);
+            in--;
+        }
+        return number;
+    }
     
+    
+    public static long largest_factor(long number){
+        int mid = (int)Math.sqrt(number);
+        int in = mid;
+        while(in > 1){
+            if(number % in == 0 ) return in;
+            in--;
+        }
+        return number;
+    }
 
     /**
      * a &gt b
@@ -78,15 +102,26 @@ public class Basic {
      * @return lcm
      */
     public static long lcm(long a, long q){
-        swap(a, q);
         return (a * q) / gcd(a, q);
     }
-    public static void  swap(long a, long q){
-        if(a < q ){
-            a = a + q;
-            a = a - q;
-            q = a - q;
+
+    public static long reverse_to_long(long number) {
+        return Long.parseLong(new StringBuilder(to_base(number, 10)).reverse().toString());
+    }
+
+    public static String reverse(long number) {
+        return new StringBuilder(to_base(number, 10)).reverse().toString();
+    }
+
+    public static String to_base(long number, int base) {
+        StringBuilder sb = new StringBuilder();
+        long numt = number;
+        while(numt > 0){
+            sb.append(__DIGITS[(int)(numt % base)]);
+            numt /= base;
         }
+        if(sb.toString().equals("")) return "0";
+        return sb.reverse().toString();
     }
     
 }
