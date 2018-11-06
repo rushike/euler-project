@@ -9,7 +9,7 @@ public class P1{
     public long sum_multiple(long max, int ... m){
         int sum = 0, j;
         Arrays.sort(m);
-        System.out.println("Multiples  : " + Arrays.toString(m));
+        //System.out.println("Multiples  : " + Arrays.toString(m));
         long iter = m[0];
         while(iter < max){
             j = 0;
