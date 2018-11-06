@@ -36,28 +36,7 @@ public class P634{
             b =  (int)Math.pow(x/(a * a), 0.333333) + 1;
             a++;
         }
-        //System.out.println("SE1 : " + se1);
-
-        // a = 2; b = (int)Math.pow(x/8, 0.5) + 1; intr = b + 1;
-        // System.out.println("\n\na : " + a + ", b : " + b);
-        // while(a <= b && b != 1){
-        //     b = (int)Math.pow(x/(a * a * a), 0.5) + 1;
-        //     while(b > 1) {
-        //         //System.out.println("fn( " + b + " ) = " + fn(b, a));
-        //         if(fn(b, a) <= x && b != a){
-        //             se2.add("(" + b + "^2, "+ a + "^3)");
-        //             System.out.println("("+a+", "+b+" )");
-        //         }
-        //         b--;
-        //     }
-        //     a++;
-        // }
-        // count = se1.size() + se2.size();
-        // // se1.retainAll(se2);
-        // System.out.println("S1 " + se1);
-        //System.out.println("S2 " + se1);
-        //se2.retainAll(se1);
-        //System.out.println("S2 " + se);
+        
         System.out.println("Count : " + count);
         return se1.size();
     }
