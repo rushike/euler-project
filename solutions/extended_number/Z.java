@@ -278,7 +278,11 @@ public class Z extends W {
         }return fact;
     }
     
-    private int[] factorial_op(int num){
+    public Z factorial_op(int num){
+        return new Z(new BigInteger(1, to_byte_array(factorial_op(num, true))));
+    }
+
+    private int[] factorial_op(int num, boolean test){
         int len = factorial_length(num, 2); // factorial length if in specific radix = 2
         
         int int_len = len / WRAP_BITS + 2; // num length allocated in int array, + 1
@@ -289,22 +293,26 @@ public class Z extends W {
         
         int start_offset, end_offset;
         for(int i = 2; i <= num; i++){
-            start_offset = factorial_trailing_zeros(i) / WRAP_BITS;
-
+            end_offset = int_len - factorial_length(i, 2) / WRAP_BITS;
+            start_offset = int_len - factorial_trailing_zeros(i, 2) / WRAP_BITS;
+            scale_in_between(fact, start_offset, end_offset, i, 0);
         }
-        return new int[0];
+        return fact;
     }
 
     public static int factorial_trailing_zeros(int num){
-        int n = (int)(Math.log(num) / Math.log(5));
-        return (int)(num * 0.2 * (1 - Math.pow(0.2, n)) / (1 - 0.2));
+        return factorial_trailing_zeros(num, 10);
     }
 
     public static int factorial_trailing_zeros(int num, int base){
         base = (int)Basic.largest_prime_factor(base);
-        System.out.println("Base : " + base);
         int n = (int)(Math.log(num) / Math.log(base));
-        return (int)(num * (1 / base) * (1 - Math.pow(1 / base, n)) / (1 - (1 / base)));
+        int sum = 0, mul = base;
+        for(int i = 0; i < n; i++){
+            sum  += num / mul;
+            mul *= base;
+        }
+        return sum;
     }
 
     /**

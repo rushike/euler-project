@@ -55,7 +55,7 @@ public class Basic {
     public static long largest_mid_prime_factor(long number){
         int mid = (int)Math.sqrt(number);
         ArrayList<Integer> prime_list = Basic.sieve_eratosthenes(mid);
-        System.out.println("Prime List : " + prime_list);
+        //System.out.println("Prime List : " + prime_list);
         int sz = prime_list.size(),  in = sz - 1;
         while(in > 0){
             if(number % prime_list.get(in) == 0 ) return prime_list.get(in);
@@ -66,8 +66,8 @@ public class Basic {
 
     public static long largest_prime_factor(long number){
         int mid = (int)Math.sqrt(number);
-        ArrayList<Integer> prime_list = Basic.sieve_eratosthenes((int)(number * 2));
-        System.out.println("Prime List : " + prime_list);
+        ArrayList<Integer> prime_list = Basic.sieve_eratosthenes((int)(number));
+        //System.out.println("Prime List f : " + prime_list);
         int sz = prime_list.size(),  in = sz - 1;
         while(in > 0){
             if(number % prime_list.get(in) == 0 ) return prime_list.get(in);
